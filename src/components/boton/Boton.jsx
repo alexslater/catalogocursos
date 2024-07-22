@@ -7,7 +7,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 const Boton = (props) => {
 
     const {texto, fn, estiloboton} = props
-    const estilo = "btn " + '"' + {estiloboton} + '"'
+    const estilo = 'btn ' + estiloboton
 
     return (
         <button type="button" className={estilo} onClick={() => fn()}>{props.texto}</button>
