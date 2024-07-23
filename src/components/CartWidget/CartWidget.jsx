@@ -10,14 +10,16 @@ import cartLogo from "./assets/cart.jpeg"
 const CartWidget = () => {
 
     return (
-        <div className='row justify-content-md-center margen-fila'>
-            <div className='col-2'>
-                <img src={cartLogo} alt="Logo carrito de compras" />
-            </div>
-            <div className='col-2'>
-                <h2>0</h2>
-        </div>
-</div>
+        <>
+            <ul className='navbar-nav'>
+                <li>
+                <img src={cartLogo} alt="Logo carrito de compras" width="30" height="24" className='d-inline-block align-text-top' />
+                </li>
+                <li><h3>0</h3></li>
+            </ul>
+        </>
+
+
     )
 }
 
