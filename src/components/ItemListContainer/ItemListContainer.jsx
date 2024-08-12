@@ -27,8 +27,12 @@ const ItemListContainer = () => {
             <div className='row'>
                 {cursos.map((el) => {
                     return (
-                       <><ItemCurso key={el.id} curso={el} />
-                       <ItemCount /></>
+                       <>
+                       <ItemCurso key={el.id} curso={el}>
+                        Testing
+                        </ItemCurso>
+                       <ItemCount />
+                       </>
                     )
                 })}
             </div>

@@ -58,3 +58,14 @@ export const getCursos = () => {
 
 }
  
+export const getCurso = (id) => {
+
+    return new Promise((resolve, reject) => {
+
+        setTimeout(() => {
+            resolve(cursos[id])
+            reject("Error al obtener el curso")
+        }, 600)
+    })
+
+}

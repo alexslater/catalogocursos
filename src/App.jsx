@@ -7,6 +7,7 @@ import NavBar from './components/NavBar/NavBar'
 import ItemCount from './components/ItemCount/ItemCount'
 import './css/style.css'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
+import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer'
 
 function App() {
 
@@ -15,13 +16,16 @@ function App() {
       <div className="row">
         <NavBar />
       </div>
-      <div className="row border rounded cuadro-texto">
-        <h5>Agrega la cantidad de cursos que deseas comprar:</h5>
-        <ItemCount />
+      <div className='row'>
+        <ItemDetailContainer />
       </div>
+
+     { /*
       <div className='row'>
         <ItemListContainer />
       </div>
+      */
+      }
     </div>
 
   )
