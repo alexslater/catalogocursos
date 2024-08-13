@@ -8,25 +8,25 @@ import ItemCount from './components/ItemCount/ItemCount'
 import './css/style.css'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {
 
   return (
-    <div className='container'>
-      <div className="row">
-        <NavBar />
-      </div>
-      <div className='row'>
-        <ItemDetailContainer />
-      </div>
+    <BrowserRouter>
 
-     { /*
-      <div className='row'>
-        <ItemListContainer />
-      </div>
-      */
-      }
-    </div>
+    
+      <NavBar />
+    
+      <Routes>
+        <Route path="/" element={<ItemListContainer />} />
+        <Route path="/:categoriaID" element={<ItemListContainer />} />
+        <Route path="/detalle/:idcurso" element={<ItemDetailContainer />} />
+
+      </Routes>
+      
+    </BrowserRouter>
+    
 
   )
 }
