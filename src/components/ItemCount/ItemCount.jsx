@@ -6,7 +6,7 @@ import { useState } from "react"
 import Boton from "../Boton/Boton"
 import "./css/style.css"
 
-const ItemCount = () => {
+const ItemCount = ({id, handleComprar}) => {
 
     const[count, setCount] = useState(1)
 
@@ -16,7 +16,7 @@ const ItemCount = () => {
             setCount(count + 1)
         }
         else if(count === 15) {
-            alert("Puedes comprar un máximo de 15 cursos!")
+            alert("Puedes comprar un máximo de 15 cupos por curso!")
         } 
     }
 
@@ -37,6 +37,9 @@ const ItemCount = () => {
                 </div> 
                 <div className='col-1'>
                     <Boton texto="+" estiloboton="btn btn-secondary" fn={sumar}/>
+                </div>
+                <div className='col-1'>
+                    <button className="btn btn-primary" onClick={() => handleComprar(count)}>Comprar</button>
                 </div>
             </div>
         </div> 

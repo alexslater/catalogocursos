@@ -1,9 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import ItemCount from "../ItemCount/ItemCount";
+import { CartContext } from "../../context/CartContext";
+
 
 export const ItemDetail = ({curso, mostrarSiguiente, mostrarAnterior}) => {
 
+  const {cart, setCart, agregarAlCarro} = useContext(CartContext)
+
+  const handleComprar = (count) => {
+    agregarAlCarro({...curso, cantidad: count})
+  }
+
+  console.log(cart)
+
   return (  
+
+
   <>
     <div key={curso.id} className='card'>
         <h5 className='card-title'>{curso.nombre_curso}</h5>
@@ -12,7 +24,7 @@ export const ItemDetail = ({curso, mostrarSiguiente, mostrarAnterior}) => {
         <div className="col">
 
         </div>
-        <ItemCount />
+        <ItemCount id={curso.id} handleComprar={handleComprar} />
         <button className="btn btn-primary" onClick={mostrarSiguiente}>Ver siguiente</button>
         <button className="btn btn-primary" onClick={mostrarAnterior}>Ver anterior</button>
        

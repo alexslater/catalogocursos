@@ -6,6 +6,7 @@ import aalogo from './assets/logoaa-small.png';
 import CartWidget from '../CartWidget/CartWidget';
 import { useEffect, useState } from 'react';
 import { getCategorias } from '../../asyncMock'
+import { Link } from "react-router-dom";
 
 /*<a className="navbar-brand" href="#">
 <img src={aalogo} alt="Logo Amplitud Académica" width="30" height="24" className="d-inline-block align-text-top" />
@@ -31,21 +32,24 @@ function NavBar () {
       
         <nav className="navbar navbar-expand-lg bg-body-tertiary border-bottom border-body">
             <div className="container-fluid">
-                <a className="navbar-brand" href="/">
-                <img src={aalogo} alt="Logo Amplitud Académica" width="30" height="24" className="d-inline-block align-text-top" />
-                Amplitud Académica
-                </a>
+                <Link to="/">
+                    <img src={aalogo} alt="Logo Amplitud Académica" width="30" height="24" className="d-inline-block align-text-top" />
+                    <p className="nav-link">Amplitud Académica</p>
+                </Link>
                 <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                    <ul className='navbar-nav'>
-
+                    <ul className='navbar-nav'>    
                         {
-                            categorias.length > 0 && categorias.map(e => <li key={e.id}><a className="nav-link active" aria-current="page" href={`/${e.categoria}`}>{e.categoria}</a></li>)
+                            categorias.length > 0 && categorias.map(e => <li key={e.id}>  <a className="nav-link active" aria-current="page" href={`/${e.categoria}`}>{e.categoria}</a></li>)
                         }
                         <li>
-                            <a className="nav-link" href="/">Contacto</a>
+                            <Link to="/">
+                                <p className="nav-link">Contacto</p>
+                            </Link>
                         </li>
                         <li>
-                            <CartWidget />
+                            <Link to="/cart">
+                                <CartWidget />
+                            </Link>
                         </li>
                     </ul>
                 </div>

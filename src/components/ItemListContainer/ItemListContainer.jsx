@@ -12,6 +12,7 @@ const ItemListContainer = () => {
     const [cargando, setCargando] = useState(true)
     
     const params = useParams()
+    console.log(params)
 
     useEffect(() => {
         if(params) {
