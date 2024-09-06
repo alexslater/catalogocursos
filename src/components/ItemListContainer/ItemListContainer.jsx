@@ -5,15 +5,21 @@ import ItemCurso from '../ItemCurso/ItemCurso'
 import ItemCount from '../ItemCount/ItemCount'
 import { useParams } from 'react-router-dom'
 import { Button } from 'bootstrap/dist/js/bootstrap.bundle.min'
+import { db } from '../../services/firebaseConfig'
+import { collection, getDocs, query, where} from 'firebase/firestore'
+
 
 const ItemListContainer = () => {
 
     const [cursos, setCursos] = useState([])
     const [cargando, setCargando] = useState(true)
     
-    const params = useParams()
-    console.log(params)
+    //const params = useParams()
+    const { categoriaID } = useParams()
+    console.log("PARAMS DEL ITEMLIST CONTAINER: ", categoriaID)
 
+    // Con AsyncMock
+    /*
     useEffect(() => {
         if(params) {
             getCursosCategoria(params.categoriaID)
@@ -28,9 +34,39 @@ const ItemListContainer = () => {
             .finally(() => setCargando(false))
             console.log("Pasaste por aca?")
         }
-    }, [])
 
-  
+
+    }, [])
+    */
+
+    useEffect(() => {
+
+        const cursosRef = collection(db, "cursos")
+        if(categoriaID) {
+            const cursosPorCategoria = query(cursosRef, where("categoria", "==", categoriaID))
+            getDocs(cursosPorCategoria).then(snapshot => { 
+                const curso = snapshot.docs.map(doc => {
+                    return (
+                        doc.data()
+                    )
+                })
+                setCursos(curso)
+            }).finally(setCargando(false))
+        }
+        else {
+            getDocs(cursosRef).then(snapshot => {
+                const listacursos = snapshot.docs.map( doc => {
+                    return (
+                        doc.data()
+                    )
+                } )
+                setCursos(listacursos)
+             } ).finally(setCargando(false))
+            
+        }
+      
+    }, [categoriaID])
+    
 
     if(cargando) {
         return (
@@ -44,7 +80,6 @@ const ItemListContainer = () => {
                     return (
                        <>
                        <ItemCurso key={el.id} curso={el} /> 
-                    
                        </>
                     )
                 })}
