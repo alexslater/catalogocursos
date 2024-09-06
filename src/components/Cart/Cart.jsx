@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { CartItem } from "../CartItem/CartItem";
+import { Link } from 'react-router-dom'
 
 const Cart = () => {
     
@@ -37,6 +38,9 @@ const Cart = () => {
                  <h5 className='card-title'>Total de la compra</h5>
                  <h6 className="card-subtitle mb-2 text-body-secondary">$ CLP {totalCompra()}</h6>
                  <button className="btn btn-danger" onClick={() => vaciarCarro()}>Vaciar carro</button>
+                 <Link to="/checkout">
+                    <button className="btn btn-primary">Terminar compra</button>
+                 </Link>
                  </div>
     
         }
